@@ -52,14 +52,7 @@ class _hotelScreenState extends State<hotelScreen> {
               a3: data['a3'],
               a4: data['a4'],
             );
-            // Check if hotel is already in booking state
-            // if(bookingEntity.bookingId!=null && bookingEntity.bookingId!.contains(profBookingID))
-            //   {
-            //     bookingEntity.isBooked = true;
-            //   } else
-            //     {
-            //       bookingEntity.isBooked = false;
-            //     }
+
             list.add(bookingEntity);
           }
         }
@@ -75,8 +68,7 @@ class _hotelScreenState extends State<hotelScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Hotels allHotels = new Hotels();
-    // print("hotels ${allHotels.hotels}");
+
     print('aminities ${aminities}');
     return new Scaffold(
           appBar: AppBar(
@@ -106,7 +98,7 @@ class _hotelScreenState extends State<hotelScreen> {
             ),
             actions: [
               PopupMenuButton<int>(
-                color: Colors.indigo,
+                color: Colors.indigo.shade200,
                 onSelected: (item) => onSelected(context, item),
                 itemBuilder: (context) => [
                   PopupMenuItem<int>(
@@ -194,6 +186,9 @@ class _hotelScreenState extends State<hotelScreen> {
                         ),
                       ],
                     ),
+
+
+                    //iterating all hotels using Listview builder
 
                     SingleChildScrollView(
                       child: aminities.isNotEmpty
@@ -287,6 +282,8 @@ class _hotelScreenState extends State<hotelScreen> {
                                       )
                                     ]);
                               })
+
+                      // providing load screen while waiting for hotels
                           : const Center(
                               child: CircularProgressIndicator(),
                             ),
@@ -301,6 +298,7 @@ class _hotelScreenState extends State<hotelScreen> {
           );
   }
 
+  //Method for menu button to signout and show bookings
   void onSelected(BuildContext context, int item) {
     switch (item) {
       case 0:

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 // import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hotelreservation/hotelScreen.dart';
+import 'package:hotelreservation/facebookLogin.dart';
 
 import 'home.dart';
 
@@ -23,6 +25,7 @@ class _LoginState extends State<Login> {
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  // We will use only these names later
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
 
@@ -41,6 +44,7 @@ class _LoginState extends State<Login> {
         if (value!.isEmpty) {
           return "Please enter your Email Address";
         }
+        // conditional requirements for the mail
         if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
           return ("Please enter a valid Email Address");
         }
@@ -66,6 +70,7 @@ class _LoginState extends State<Login> {
       obscureText: true,
       controller: passwordController,
       validator: (value) {
+        //conditional requirements for password
         RegExp regexp = new RegExp(r'^.{6,}$');
         if (value!.isEmpty) {
           return "Please enter your Password";
@@ -160,7 +165,9 @@ class _LoginState extends State<Login> {
                       child: RaisedButton(
                         color: Colors.redAccent.withOpacity(0.1),
                         onPressed: () {
-                          facebookLogin();
+                          final plugin = FacebookLogin(debug: true);
+                          Navigator.push(context, MaterialPageRoute(builder: (Context) =>
+                              facebookLogin(plugin:  plugin,)));
                         },
                         child: Row(
                           children: [
@@ -242,10 +249,4 @@ class _LoginState extends State<Login> {
       });
   }
 
-  void facebookLogin() async{
-    // final FacebookLogin fbLogin = FacebookLogin();
-    // final result = await fbLogin.logInWithReadPermissions(['email']);
-    // final String status = result.status as String;
-    // Fluttertoast.showToast(msg: status);
-  }
  }

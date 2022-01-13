@@ -8,6 +8,7 @@ class bookingConfirmation extends StatefulWidget {
   _bookingConfirmationState createState() => _bookingConfirmationState();
 }
 
+// To show a message that the hotel is booked and allow him to continue to browse further
 class _bookingConfirmationState extends State<bookingConfirmation> {
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class _bookingConfirmationState extends State<bookingConfirmation> {
             color: Color(0xffCCCCCC),
           ),
           onPressed: () {
-            Navigator.pushNamed(context, '/details');
+            Navigator.pushNamed(context, '/screen');
           },
         ),
         title: Row(
@@ -42,11 +43,11 @@ class _bookingConfirmationState extends State<bookingConfirmation> {
           FlatButton(
             color: Colors.redAccent,
             child: CircleAvatar(
-              backgroundColor: Colors.black54,
+              backgroundColor: Colors.redAccent,
               radius: 20,
               child: Icon(
                 Icons.person,
-                color: Color(0xffCCCCCC),
+                color: Colors.redAccent,
               ),
             ),
             onPressed: () {},

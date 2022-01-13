@@ -10,6 +10,7 @@ class home extends StatefulWidget {
   _homeState createState() => _homeState();
 }
 
+//Static Hotel news images
 class _homeState extends State<home> {
   final List<String> slideimage = [
     'images/news1.JPG',
@@ -113,6 +114,9 @@ class _homeState extends State<home> {
                       ),
                     ],
                   ),
-                ))));
+                )
+            )
+        )
+    );
   }
 }
